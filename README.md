@@ -29,7 +29,7 @@ count  |  grade
 
 Percentage of total
 
-```
+```sql
 select grade, count, 100 * count / (sum(count) over ())::numeric as percentage
 from (
   select grade, count(1)
