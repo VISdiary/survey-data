@@ -30,13 +30,13 @@ count  |  grade
 Percentage of total
 
 ```sql
-select grade, count, 100 * count / (sum(count) over ())::numeric as percentage
-from (
-  select grade, count(1)
-  from diary_survey
-  group by grade
+SELECT grade, count, 100 * count / (SUM(count) OVER ())::numeric AS percentage
+FROM (
+  SELECT grade, count(1)
+  FROM diary_survey
+  GROUP BY grade
 ) t2
-order by percentage desc;
+ORDER BY percentage DESC;
 
 
 grade   | count |       percentage       
