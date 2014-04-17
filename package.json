@@ -1,0 +1,15 @@
+{
+  "name": "survey-data",
+  "version": "0.0.0",
+  "description": "survey-data ===========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Selzer <aselzer3@gmail.com> (http://alexselzer.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^0.3.7",
+    "through2": "^0.4.1"
+  }
+}

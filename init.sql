@@ -1,19 +1,23 @@
-create table diary_survey (
+DROP TABLE diary_survey;
+
+CREATE TABLE diary_survey (
   gender VARCHAR,
   grade VARCHAR,
-  usage VARCHAR,
-  more_space VARCHAR,
+  usage_freq VARCHAR,
+  more_homework_space VARCHAR,
   cover VARCHAR,
   size VARCHAR,
-  layout VARCHAR,
-  plastic_triangle VARCHAR,
-  info VARCHAR,
+  layout VARCHAR[],
+  plastic_holder VARCHAR,
+  info VARCHAR[],
+  suggestions VARCHAR(2048),
   timestamp VARCHAR,
   sketching VARCHAR,
   online_service VARCHAR,
-  use VARCHAR,
+  usage VARCHAR[],
   looks VARCHAR,
   quotes VARCHAR,
-  map VARCHAR,
-  other_suggestions VARCHAR(2048)
+  map VARCHAR
 );
+
+COPY diary_survey FROM '/Users/AlexanderSelzer1/git/survey-data/data.tsv';
