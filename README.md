@@ -4,7 +4,7 @@ survey-data
 The results of the diary survey - conversion and analysis
 
 The output of the Google survey will be pushed into a SQL database, from where it
-can be queried more flexibly. We can then use R, etc. to visualize it...
+can: be queried more flexibly. We can then use R, etc. to visualize it...
 
 run `psql -f init.sql -d diary` to import the data into the database `diary`.
 
@@ -29,14 +29,13 @@ count  |  grade
 
 Percentage of total
 
-```
+```sql
 SELECT grade, count, 100 * count / (SUM(count) OVER ())::numeric AS percentage
 FROM (
   SELECT grade, count(1)
   FROM diary_survey
   GROUP BY grade
-) t2
-ORDER BY percentage desc;
+ORDER BY percentage DESC;
 
 
 grade   | count |       percentage       
@@ -50,7 +49,11 @@ Grade 6  |    25 |    10.1626016260162602
 Grade 12 |     1 | 0.40650406504065040650
 (7 rows)
 
+```
+
 Popularity of information in diary (including custom responses)
+
+```sql
 
 SELECT unnest(info) AS information, count(info)
 FROM diary_survey
