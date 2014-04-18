@@ -30,13 +30,13 @@ count  |  grade
 Percentage of total
 
 ```
-select grade, count, 100 * count / (sum(count) over ())::numeric as percentage
-from (
-  select grade, count(1)
-  from diary_survey
-  group by grade
+SELECT grade, count, 100 * count / (SUM(count) OVER ())::numeric AS percentage
+FROM (
+  SELECT grade, count(1)
+  FROM diary_survey
+  GROUP BY grade
 ) t2
-order by percentage desc;
+ORDER BY percentage desc;
 
 
 grade   | count |       percentage       
@@ -49,4 +49,36 @@ Grade 9  |    31 |    12.6016260162601626
 Grade 6  |    25 |    10.1626016260162602
 Grade 12 |     1 | 0.40650406504065040650
 (7 rows)
+
+Popularity of information in diary (including custom responses)
+
+SELECT unnest(info) AS information, count(info)
+FROM diary_survey
+GROUP BY unnest(info);
+
+information                             | count 
+----------------------------------------------------------------------------------+-------
+Useful websites                                                                  |   123
+School rules                                                                     |    62
+Tips for studying                                                                |   117
+When Technology Classes Change for example when Food Tech changes to Design tech |     1
+VIS Website Passwords for Parents                                                |     1
+Map of the world                                                                 |   127
+Maths/Chemistry/Physics formulas (a small cheat sheet)                           |   177
+Space to plan personal events                                                    |     1
+Alekto Soundcloud Link                                                           |     1
+Trips for Subjects/Activities/Sports                                             |     2
+Public Holidays                                                                  |   212
+anything useful                                                                  |     1
+Moodle info/tips                                                                 |   100
+Computer cheat sheets                                                            |   105
+Todo's check list                                                                |   148
+motivation picures                                                               |     1
+School Events                                                                    |   209
+to take home section                                                             |     1
+Time table                                                                       |   223
+test's                                                                           |     1
+Organization tips                                                                |    92
+Staff contact list                                                               |   141
+(22 rows)
 ```
