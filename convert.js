@@ -9,8 +9,12 @@ var csv = require("csv");
 
 var arrays = [6, 8, 13];
 
+if (!process.argv[2]) {
+  console.log("node convert.js filename.tsv") && process.exit();
+}
+
 csv()
-.from("./diary-survey.tsv", {
+.from(process.argv[2], {
   delimiter: "\t",
   escape: "",
   quote: ""

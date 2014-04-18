@@ -6,7 +6,9 @@ The results of the diary survey - conversion and analysis
 The output of the Google survey will be pushed into a SQL database, from where it
 can: be queried more flexibly. We can then use R, etc. to visualize it...
 
-run `psql -f init.sql -d diary` to import the data into the database `diary`.
+`node convert.js ./results.tsv` -> creates data.tsv from `results.tsv``(from Google Drive)
+`psql -f init.sql -d diary` -> import the data into the database `diary`
+`psql -f suggestions.sql -d diary` -> Export suggestions as markdown
 
 ## Example
 
